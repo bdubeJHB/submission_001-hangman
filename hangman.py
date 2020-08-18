@@ -1,33 +1,32 @@
-#TIP: use random.randint to get a random word from the list
 import random
 
 
 def read_file(file_name):
-    """
-    TODO: Step 1 - open file and read lines as words
-    """
-    return []
+    with open(file_name, 'r') as sw:
+        txt = sw.readlines()
+        sw.close()
+    return txt
 
 
 def select_random_word(words):
-    """
-    TODO: Step 2 - select random word from list of file
-    """
-    return words[0]
+    w_index = random.randint(0, len(words) - 1)
+    word = list(words[w_index])
+    l_index = random.randint(0, len(word) - 1)
 
+    word[l_index] = '_'
+    print("Guess the word: " + "".join(word))
+    return words[w_index]
 
 
 def get_user_input():
-    """
-    TODO: Step 3 - get user input for answer
-    """
-    return 'TODO'
+    ans = input("Guess the missing letter: ")
+    return ans
 
 
 def run_game(file_name):
-    """
-    This is the main game code. You can leave it as is and only implement steps 1 to 3 as indicated above.
-    """
+    #"""
+    #This is the main game code. You can leave it as is and only implement steps 1 to 3 as indicated above.
+    #"""
     words = read_file(file_name)
     word = select_random_word(words)
     answer = get_user_input()
